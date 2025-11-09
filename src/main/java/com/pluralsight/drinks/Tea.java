@@ -1,9 +1,9 @@
 package com.pluralsight.drinks;
 
-public class Coffee extends Drink{
+public class Tea extends Drink{
 
-    public Coffee(String size){
-        super("", size, 5);
+    public Tea(String size){
+        super("", size, 4);
     }
 
     @Override
