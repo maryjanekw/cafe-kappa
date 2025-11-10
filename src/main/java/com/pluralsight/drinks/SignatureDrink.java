@@ -2,10 +2,12 @@ package com.pluralsight.drinks;
 
 public class SignatureDrink extends Drink{
 
+    // Constructor
     public SignatureDrink(String size){
         super("", size, 6);
     }
 
+    // Price Calculator
     @Override
     public double calculatedPrice(){
         double sizeMultiplier = switch (size.toLowerCase()){

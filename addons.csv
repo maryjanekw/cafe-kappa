@@ -1,17 +1,17 @@
-Item #,Category,Name,isFree
-101,Milk Choice,Whole Milk,True
-102,Milk Choice,Oat Milk,True
-103,Milk Choice,Soy Mik,True
-104,Sweeteners,Classic Sugar,True
-105,Sweeteners,Cane Sugar,True
-106,Sweeteners,Honey,True
-107,Sweeteners,Agave Syrup,True
-108,Espresso,Extra-Shot Espresso,False
-109,Espresso,Blonde Espresso,False
-110,Espresso,Ristretto Espresso,False
-111,Drizzle & Toppings,Caramel Drizzle,False
-112,Drizzle & Toppings,Chocolate Drizzle,False
-113,Drizzle & Toppings,Whipped Cream,False
-114,Drizzle & Toppings,Cinnamon Dust,False
-115,Drizzle & Toppings,Cocoa Powder,False
-116,Drizzle & Toppings,Boba Pearls,False
+Item #,Category,Name,isFree,Price
+101,Milk Choice,Whole Milk,True,0.0
+102,Milk Choice,Oat Milk,True,0.0
+103,Milk Choice,Soy Mik,True,0.0
+104,Sweeteners,Classic Sugar,True,0.0
+105,Sweeteners,Cane Sugar,True,0.0
+106,Sweeteners,Honey,True,0.0
+107,Sweeteners,Agave Syrup,True,0.0
+108,Espresso,Extra-Shot Espresso,False,0.75
+109,Espresso,Blonde Espresso,False,0.75
+110,Espresso,Ristretto Espresso,False,0.75
+111,Drizzle & Toppings,Caramel Drizzle,False,0.75
+112,Drizzle & Toppings,Chocolate Drizzle,False,0.75
+113,Drizzle & Toppings,Whipped Cream,False,0.75
+114,Drizzle & Toppings,Cinnamon Dust,False,0.75
+115,Drizzle & Toppings,Cocoa Powder,False,0.75
+116,Drizzle & Toppings,Boba Pearls,False,0.75

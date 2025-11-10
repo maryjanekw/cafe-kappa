@@ -1,19 +1,17 @@
 package com.pluralsight.drinks;
 
-public class Food {
+public class Food extends MenuItem{
 
-    private String name;
+    // Variable
     private double price;
 
-    public Food(String name, double price) {
-        this.name = name;
+    // Constructor
+    public Food(int itemNumber, String category, String name, double price) {
+        super(itemNumber, category, name, price, price, price);
         this.price = price;
     }
 
-    public String getName() {
-        return name;
-    }
-
+    // Getter
     public double getPrice() {
         return price;
     }
