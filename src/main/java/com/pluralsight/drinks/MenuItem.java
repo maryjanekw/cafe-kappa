@@ -44,4 +44,11 @@ public class MenuItem {
             default -> smallPrice;
         };
     }
+
+    // toString method
+    @Override
+    public String toString() {
+        return String.format("%d - %s (%s): Small $%.2f | Medium $%.2f | Large $%.2f",
+                itemNumber, name, category, smallPrice, mediumPrice, largePrice);
+    }
 }

@@ -1,27 +1,23 @@
 package com.pluralsight.drinks;
 
-public abstract class Drink {
+public abstract class Drink extends MenuItem{
 
-    // Variables
-    protected String name;
+    // Variable
     protected String size;
-    protected double basePrice;
 
-    // Construtio
-    public Drink(String name, String size, double basePrice) {
-        this.name = name;
+    // Construction
+
+
+    public Drink(int itemNumber, String category, String name,
+                 double smallPrice, double mediumPrice, double largePrice, String size) {
+        super(itemNumber, category, name, smallPrice, mediumPrice, largePrice);
         this.size = size;
-        this.basePrice = basePrice;
     }
 
     // Abstract price calculator
     public abstract double calculatedPrice();
 
     // Getters
-    public String getName() {
-        return name;
-    }
-
     public String getSize() {
         return size;
     }
