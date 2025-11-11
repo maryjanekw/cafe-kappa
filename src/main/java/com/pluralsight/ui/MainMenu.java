@@ -1,5 +1,5 @@
 package com.pluralsight.ui;
 
-public class Program {
+public class MainMenu {
 
 }
