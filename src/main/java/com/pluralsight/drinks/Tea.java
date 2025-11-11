@@ -4,8 +4,8 @@ public class Tea extends Drink{
 
     // Constructor
     public Tea(int itemNumber, String category, String name,
-               double smallPrice, double mediumPrice, double largePrice, String size) {
-        super(itemNumber, category, name, smallPrice, mediumPrice, largePrice, size);
+               double small, double medium, double large) {
+        super(itemNumber, category, name, small, medium, large, "small");
     }
 
     // Price Calculator
