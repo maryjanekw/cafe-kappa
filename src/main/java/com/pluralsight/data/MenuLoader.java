@@ -22,7 +22,6 @@ public class MenuLoader {
                 double medium = Double.parseDouble(parts[4].trim());
                 double large = Double.parseDouble(parts[5].trim());
 
-                //
                 MenuItem item;
                 switch (category.toLowerCase()){
                     case "coffee" -> item = new Coffee(itemNumber, category, name, small, medium, large);
