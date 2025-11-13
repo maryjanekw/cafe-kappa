@@ -94,6 +94,8 @@ public class OrderScreen {
             return;
         }
 
+        System.out.printf("#%d: %s%n", selected.getItemNumber(), selected.getName());
+
         // Default size
         String size = "small";
 
@@ -114,7 +116,7 @@ public class OrderScreen {
             CustomDrink customDrink = new CustomDrink(drink);
             double price = customDrink.calculatedPrice();
             System.out.printf("Added %s (%s) - $%.2f%n", drink.getName(), size, price);
-        } else {
+        } else { // default
             double price = selected.getPrice("small");
             System.out.printf("Added %s - $%.2f%n", selected.getName(), price);
         }
@@ -122,6 +124,8 @@ public class OrderScreen {
         // Item Quantity
         System.out.print("Quantity: ");
         int qty = Math.max(1, getValidInt(read));
+        System.out.println("Quantity selected: " + qty);
+
 
         // Add Add-ons
         List<AddOn> chosenAddOns = new ArrayList<>();
@@ -152,23 +156,30 @@ public class OrderScreen {
         }
 
         // Display chosen item
-        order.addMenuItem(selected, size, chosenAddOns, qty);
-        System.out.printf("Added %d x %s (%s) to order.%n", qty, selected.getName(), size);
+       order.addMenuItem(selected, size, chosenAddOns, qty);
+
+        // Display item confirmation
+        System.out.println("\n--- Order Confirmation ---");
+        System.out.println("Item #: " + selected.getItemNumber());
+        System.out.println("Name: " + selected.getName());
+        System.out.println("Size: " + size);
+        System.out.println("Quantity: " + qty);
+
+        if (chosenAddOns.isEmpty()) {
+            System.out.println("Add-ons: none");
+        } else {
+            System.out.print("Add-ons: ");
+            for (int i = 0; i < chosenAddOns.size(); i++) {
+                System.out.print(chosenAddOns.get(i).getName());
+                if (i < chosenAddOns.size() - 1) System.out.print(", ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("---------------------------\n");
+
     }
 
-//    // Size prompt
-//    private static String getSizeFromUser(Scanner scanner, MenuItem selected) {
-//        System.out.print("Choose size (small/medium/large) [default small]: ");
-//        String sizeInput = scanner.nextLine().trim().toLowerCase();
-//        if (sizeInput.isEmpty()) return "small";
-//        return switch (sizeInput) {
-//            case "small", "medium", "large" -> sizeInput;
-//            default -> {
-//                System.out.println("Invalid size, defaulting to small.");
-//                yield "small";
-//            }
-//        };
-//    }
 
     // Checkout method
     private static void checkout(Scanner read, Order order) throws IOException {
@@ -178,17 +189,17 @@ public class OrderScreen {
         }
 
         // Print cart summary
-//        order.printSummary();
+        order.printSummary();
 
-        // Gets calculations from Order class
-        double subtotal = order.calculatedSubtotal();
-        double tax = order.getTax();
-        double total = subtotal + tax;
-
-        // Prints calculated totals
-        System.out.printf("\nSubtotal: $%.2f%n", subtotal);
-        System.out.printf("Tax: $%.2f%n", tax);
-        System.out.printf("Total: $%.2f%n", total);
+//        // Gets calculations from Order class
+//        double subtotal = order.calculatedSubtotal();
+//        double tax = order.getTax();
+//        double total = subtotal + tax;
+//
+//        // Prints calculated totals
+//        System.out.printf("\nSubtotal: $%.2f%n", subtotal);
+//        System.out.printf("Tax: $%.2f%n", tax);
+//        System.out.printf("Total: $%.2f%n", total);
 
         // Confirms purchase
         System.out.println("\nWould you like to complete this order? (yes/no): ");
