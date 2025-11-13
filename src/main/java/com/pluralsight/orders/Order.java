@@ -30,17 +30,14 @@ public class Order {
 
     // Getters
     public String getOrderId() {
-
         return orderId;
     }
 
     public LocalDateTime getTimeCreated() {
-
         return timeCreated;
     }
 
     public List<OrderItem> getLines() {
-
         return List.copyOf(lines);
     }
 
@@ -69,24 +66,18 @@ public class Order {
     }
 
     // Total of order
-    public double calculateTotal(){
-        return lines.stream()
-                .mapToDouble(OrderItem::getLineTotal)
-                .sum();
-    }
-
-    public double getSubTotal(){
+    public double calculatedSubtotal(){
         return lines.stream()
                 .mapToDouble(OrderItem::getLineTotal)
                 .sum();
     }
 
     public double getTax(){
-        return getSubTotal() * taxRate;
+        return calculatedSubtotal() * taxRate;
     }
 
     public double getTotal(){
-        return getSubTotal() + getTax();
+        return calculatedSubtotal() + getTax();
     }
 
     // Receipt Format
@@ -102,7 +93,7 @@ public class Order {
             sb.append(line.toString()).append("\n");
         }
 
-        sb.append("\nSubtotal: $").append(String.format("%.2f", getSubTotal())).append("\n");
+        sb.append("\nSubtotal: $").append(String.format("%.2f", calculatedSubtotal())).append("\n");
         sb.append(String.format("Tax (%.1f%%): $%.2f\n", taxRate * 100, getTax()));
         sb.append(String.format("Total: $%.2f\n", getTotal()));
         sb.append("\nThank you for visiting Café Kappa!\n");
@@ -110,5 +101,24 @@ public class Order {
         return sb.toString();
     }
 
+    // Order Summary
+    public void printSummary(){
+        System.out.println("\n------ Order Summary------");
+        if (lines.isEmpty()){
+            System.out.printf("Cart is empty");
+            return;
+        }
+        for (OrderItem line : lines) {
+            System.out.println(line.toString());
+        }
+        System.out.println(String.format("\nSubtotal: $%.2f", calculatedSubtotal()));
+        System.out.println(String.format("Tax: $%.2f", getTax()));
+        System.out.println(String.format("Total: $%.2f", getTotal()));
+    }
+
+    // Clear the Cart for the next customer
+    public void clear() {
+        lines.clear();
+    }
 
 }

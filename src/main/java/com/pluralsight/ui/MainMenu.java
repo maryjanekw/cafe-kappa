@@ -1,10 +1,11 @@
 package com.pluralsight.ui;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainMenu {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner read = new Scanner(System.in);
         boolean running = true;
 
@@ -39,6 +40,7 @@ public class MainMenu {
     // Input validation Helper
     private static int getValidInt(Scanner scanner) {
         while (true) {
+
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {

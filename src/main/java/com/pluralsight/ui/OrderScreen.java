@@ -17,7 +17,7 @@ public class OrderScreen {
     private static final String FOOD_CSV = "food.csv";
     private static final String ADDONS_CSV = "addons.csv";
 
-    public static void newOrder(Scanner read) {
+    public static void newOrder(Scanner read) throws IOException {
         // Menus and add=ons containers
         Map<Integer, MenuItem> menuMap = new TreeMap<>();
         List<AddOn> addOns = new ArrayList<>();
@@ -47,19 +47,7 @@ public class OrderScreen {
             //    case 2 ->
                 case 3 -> handleAddItem(read, menuMap, addOns, order);
                 case 4 -> System.out.println("\nCurrent order:\n " + order.buildReceiptText());
-                case 5 -> {
-                    if (order.isEmpty()) {
-                        System.out.println("Order is empty; please add at least one item before checkout.");
-                    } else {
-                        try {
-                            Path receipt = ReceiptWriter.writeReceipt(order);
-                            System.out.println("Receipt written to: " + receipt.toAbsolutePath());
-                        } catch (IOException e) {
-                            System.err.println("Failed to write receipt: " + e.getMessage());
-                        }
-                        ordering = false;
-                    }
-                }
+                case 5 -> checkout(read, order);
                 case 0 -> {
                     System.out.println("Order cancelled.");
                     ordering = false;
@@ -127,9 +115,11 @@ public class OrderScreen {
         System.out.print("Quantity: ");
         int qty = Math.max(1, getValidInt(read));
 
+
+
         // Add Add-ons
         List<AddOn> chosenAddOns = new ArrayList<>();
-        if (!addOns.isEmpty()) {
+        if (selected instanceof Drink) {
             System.out.println("\nAvailable add-ons:");
             for (int i = 0; i < addOns.size(); i++) {
                 AddOn a = addOns.get(i);
@@ -172,6 +162,39 @@ public class OrderScreen {
                 yield "small";
             }
         };
+    }
+
+    // Checkout method
+    private static void checkout(Scanner read, Order order) throws IOException {
+        if (order == null || order.isEmpty()){
+            System.out.println("Checkout is empty!");
+            return;
+        }
+
+        // Print cart summary
+        order.printSummary();
+
+        // Gets calculations from Order class
+        double subtotal = order.calculatedSubtotal();
+        double tax = order.getTax();
+        double total = subtotal + tax;
+
+        // Prints calculated totals
+        System.out.printf("\nSubtotal: $%.2f%n", subtotal);
+        System.out.printf("Tax: $%.2f%n", tax);
+        System.out.printf("Total: $%.2f%n", total);
+
+        // Confirms purchase
+        System.out.println("\nWould you like to complete this order? (yes/no): ");
+        String confirm = read.nextLine().trim().toLowerCase();
+        if (!confirm.equals("yes")){
+            System.out.println("Canceling order... \nReturn to menu...");
+            return;
+        }
+        ReceiptWriter.writeReceipt(order);
+        order.buildReceiptText();
+        System.out.println("Order complete!");
+        order.clear();
     }
 
     // Input Validator
