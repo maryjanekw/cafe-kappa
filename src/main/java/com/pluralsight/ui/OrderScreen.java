@@ -76,7 +76,7 @@ public class OrderScreen {
     public static void displayFullMenu(Map<Integer, MenuItem> menuMap) {
         System.out.println("\n--- Café Kappa Full Menu ---");
         for (MenuItem m : menuMap.values()) {
-            System.out.printf("%d) %-30s Small:$%.2f  Medium:$%.2f  Large:$%.2f%n",
+            System.out.printf("%d) %-35s Small:$%.2f  Medium:$%.2f  Large:$%.2f%n",
                     m.getItemNumber(), m.getName(),
                     m.getPrice("small"), m.getPrice("medium"), m.getPrice("large"));
         }
@@ -88,6 +88,7 @@ public class OrderScreen {
         System.out.print("Enter item number: ");
         int itemNum = getValidInt(read);
         MenuItem selected = menuMap.get(itemNum);
+
         if (selected == null) {
             System.out.println("Item number not found.");
             return;
@@ -99,9 +100,16 @@ public class OrderScreen {
         // Drink Size
         if (selected instanceof Drink) {
             Drink drink = (Drink) selected;
-            System.out.print("Enter size (small/medium/large): ");
-            String input = read.nextLine().trim().toLowerCase();
-            if (size.isEmpty()) size = "small";
+
+            while (true) {
+                System.out.print("Enter size (small,medium,large): ");
+                size = read.nextLine().trim().toLowerCase();
+
+                if (size.isEmpty()) size = "small"; // Default size
+                if (List.of("small", "medium", "large").contains(size)) break;
+
+                System.out.println("Invalid size");
+            }
 
             CustomDrink customDrink = new CustomDrink(drink);
             double price = customDrink.calculatedPrice();
@@ -114,8 +122,6 @@ public class OrderScreen {
         // Item Quantity
         System.out.print("Quantity: ");
         int qty = Math.max(1, getValidInt(read));
-
-
 
         // Add Add-ons
         List<AddOn> chosenAddOns = new ArrayList<>();
@@ -150,19 +156,19 @@ public class OrderScreen {
         System.out.printf("Added %d x %s (%s) to order.%n", qty, selected.getName(), size);
     }
 
-    // Size prompt
-    private static String getSizeFromUser(Scanner scanner, MenuItem selected) {
-        System.out.print("Choose size (small/medium/large) [default small]: ");
-        String sizeInput = scanner.nextLine().trim().toLowerCase();
-        if (sizeInput.isEmpty()) return "small";
-        return switch (sizeInput) {
-            case "small", "medium", "large" -> sizeInput;
-            default -> {
-                System.out.println("Invalid size, defaulting to small.");
-                yield "small";
-            }
-        };
-    }
+//    // Size prompt
+//    private static String getSizeFromUser(Scanner scanner, MenuItem selected) {
+//        System.out.print("Choose size (small/medium/large) [default small]: ");
+//        String sizeInput = scanner.nextLine().trim().toLowerCase();
+//        if (sizeInput.isEmpty()) return "small";
+//        return switch (sizeInput) {
+//            case "small", "medium", "large" -> sizeInput;
+//            default -> {
+//                System.out.println("Invalid size, defaulting to small.");
+//                yield "small";
+//            }
+//        };
+//    }
 
     // Checkout method
     private static void checkout(Scanner read, Order order) throws IOException {
@@ -172,7 +178,7 @@ public class OrderScreen {
         }
 
         // Print cart summary
-        order.printSummary();
+//        order.printSummary();
 
         // Gets calculations from Order class
         double subtotal = order.calculatedSubtotal();

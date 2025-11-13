@@ -22,14 +22,27 @@ public class MenuLoader {
                 double medium = Double.parseDouble(parts[4].trim());
                 double large = Double.parseDouble(parts[5].trim());
 
+                String cat = category.toLowerCase();
                 MenuItem item;
-                switch (category.toLowerCase()){
-                    case "coffee" -> item = new Coffee(itemNumber, category, name, small, medium, large);
-                    case "tea" -> item = new Tea(itemNumber, category, name, small, medium, large);
-                    case "signature drinks" -> item = new SignatureDrink(itemNumber, category, name, small, medium, large);
-                    case "food" -> item = new Food(itemNumber, category, name, small); // small = price
-                    default -> item = new MenuItem(itemNumber, category, name, small, medium, large);
-                };
+//                switch (category.toLowerCase()){
+//                    case "coffee" -> item = new Coffee(itemNumber, category, name, small, medium, large);
+//                    case "tea" -> item = new Tea(itemNumber, category, name, small, medium, large);
+//                    case "signature drinks" -> item = new SignatureDrink(itemNumber, category, name, small, medium, large);
+//                    case "food" -> item = new Food(itemNumber, category, name, small); // small = price
+//                    default -> item = new MenuItem(itemNumber, category, name, small, medium, large);
+//                };
+                if (cat.contains("brew") || cat.contains("milk") || cat.contains("chilled") || cat.contains("sweet")){
+                    item = new Coffee(itemNumber, category, name, small, medium, large);
+                } else if (cat.contains("tea")) {
+                    item = new Tea(itemNumber, category, name, small, medium, large);
+                } else if (cat.contains("signature")) {
+                    item = new SignatureDrink(itemNumber, category, name, small, medium, large);
+                } else if (cat.contains("baked") || cat.contains("pastries")) {
+                    item = new Food(itemNumber, category, name, small);
+                }else {
+                    item = new MenuItem(itemNumber, category, name, small, medium, large);
+                }
+
                 items.add(item);
             }
         }catch (IOException ex){

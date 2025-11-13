@@ -8,14 +8,14 @@ public class Tea extends Drink{
         super(itemNumber, category, name, small, medium, large, "small");
     }
 
-    // Price Calculator
-    @Override
-    public double calculatedPrice(){
-        return switch (size.toLowerCase()){
-            case "small" -> smallPrice;
-            case "medium" -> mediumPrice;
-            case "large" -> largePrice;
-            default -> smallPrice;
-        };
-    }
+//    // Price Calculator
+//    @Override
+//    public double calculatedPrice(){
+//        return switch (size.toLowerCase()){
+//            case "small" -> smallPrice;
+//            case "medium" -> mediumPrice;
+//            case "large" -> largePrice;
+//            default -> smallPrice;
+//        };
+//    }
 }

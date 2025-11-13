@@ -8,13 +8,13 @@ public class OrderItem {
     // Variables
     private MenuItem menuItem;
     private String size;
-    private List<AddOn> addOns = new ArrayList<>();
+    private final List<AddOn> addOns = new ArrayList<>();
     private int quantity = 1;
 
     // Constructor
     public OrderItem(MenuItem menuItem, String size, List<AddOn> addOns, int quantity) {
         this.menuItem = Objects.requireNonNull(menuItem);
-        this.size = (size == null) || size.isBlank() ? "small" : size.toLowerCase();
+        this.size = (size == null) || size.isBlank() ? "small" : size.trim().toLowerCase();
         if (addOns != null)this.addOns.addAll(addOns);
         this.quantity = Math.max(1, quantity);
     }

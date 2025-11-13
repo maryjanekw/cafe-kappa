@@ -9,19 +9,22 @@ public abstract class Drink extends MenuItem{
     public Drink(int itemNumber, String category, String name,
                  double smallPrice, double mediumPrice, double largePrice, String size) {
         super(itemNumber, category, name, smallPrice, mediumPrice, largePrice);
-        this.size = size;
+        this.size = (size == null || size.isBlank()) ? "small" : size.toLowerCase();
     }
 
-    // Abstract price calculator
-    public abstract double calculatedPrice();
+    // Price calculator
+    public double calculatedPrice(){
+        return getPrice(size);
+    }
 
-    // Getters
+    // Getter & Setter
     public String getSize() {
         return size;
     }
 
-    public double getBasePrice() {
-        return getPrice(size);
+    public void setSize(String size) {
+        this.size = (size == null || size.isBlank()) ? "small" : size.toLowerCase();
     }
+
 
 }
