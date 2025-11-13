@@ -6,8 +6,6 @@ public abstract class Drink extends MenuItem{
     protected String size;
 
     // Construction
-
-
     public Drink(int itemNumber, String category, String name,
                  double smallPrice, double mediumPrice, double largePrice, String size) {
         super(itemNumber, category, name, smallPrice, mediumPrice, largePrice);
@@ -21,4 +19,9 @@ public abstract class Drink extends MenuItem{
     public String getSize() {
         return size;
     }
+
+    public double getBasePrice() {
+        return getPrice(size);
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.pluralsight.ui;
 
-
 import java.util.Scanner;
 
 public class MainMenu {
@@ -10,10 +9,10 @@ public class MainMenu {
         boolean running = true;
 
         while (running) {
-            // Main menu display
+            // Main menu display1
+
             System.out.println("===== Welcome to Café Kappa =====");
             System.out.println("1) Start New Order");
-            System.out.println("2) Display Menu");
             System.out.println("0) Exit");
             System.out.print("Choose an option: ");
 
@@ -21,11 +20,9 @@ public class MainMenu {
             int choice = getValidInt(read);
 
             switch (choice) {
-                case 1 -> { // New order
+                case 1 -> {
                     System.out.println("\nStarting a new order...\n");
-                }
-                case 2 ->{ // Menu display
-
+                    OrderScreen.newOrder(read);
                 }
                 case 0 -> {
                     running = false;
@@ -34,7 +31,10 @@ public class MainMenu {
                 default -> System.out.println("Invalid choice. Try again.");
             }
         }
+        read.close();
+
     }
+
 
     // Input validation Helper
     private static int getValidInt(Scanner scanner) {

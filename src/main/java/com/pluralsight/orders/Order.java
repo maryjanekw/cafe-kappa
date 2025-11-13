@@ -23,6 +23,11 @@ public class Order {
         this.taxRate = taxRate;
     }
 
+    // No-Arg Constructor
+    public Order(){
+        this(0.0725);
+    }
+
     // Getters
     public String getOrderId() {
 
@@ -45,6 +50,11 @@ public class Order {
             throw new IllegalArgumentException("Order cannot be completed");
         }
         lines.add(line);
+    }
+
+    // Order is Empty
+    public boolean isEmpty(){
+        return lines.isEmpty();
     }
 
     // Add new item to order
