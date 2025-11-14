@@ -38,7 +38,6 @@ public class MainMenu {
             }
         }
         read.close();
-
     }
 
 
