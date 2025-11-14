@@ -79,7 +79,7 @@ public class OrderScreen {
     public static void displayFullMenu(Map<Integer, MenuItem> menuMap) {
         System.out.println("\n--- Café Kappa Full Menu ---");
         for (MenuItem m : menuMap.values()) {
-            System.out.printf("%d) %-35s Small:$%.2f  Medium:$%.2f  Large:$%.2f%n",
+            System.out.printf("%-4s %-30s Small:$%-8.2f Medium:$%-8.2f Large:$%-8.2f%n",
                     m.getItemNumber(), m.getName(),
                     m.getPrice("small"), m.getPrice("medium"), m.getPrice("large"));
         }
@@ -201,10 +201,12 @@ public class OrderScreen {
             System.out.println("Canceling order... \nReturn to menu...");
             return;
         }
-        ReceiptWriter.writeReceipt(order);
-        order.buildReceiptText();
+
+        System.out.println(order.buildReceiptText());
         System.out.println("Order complete!");
         order.clear();
+
+
     }
 
     // Input Validator
