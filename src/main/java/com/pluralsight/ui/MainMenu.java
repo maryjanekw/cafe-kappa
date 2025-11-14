@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Scanner read = new Scanner(System.in);
         boolean running = true;
 
@@ -25,6 +25,7 @@ public class MainMenu {
 
             // input validator
             int choice = getValidInt(read);
+            Loading.kappaLoader();
 
             switch (choice) {
                 case 1 -> OrderScreen.newOrder(read);

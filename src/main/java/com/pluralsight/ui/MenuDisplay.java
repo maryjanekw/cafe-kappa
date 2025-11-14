@@ -1,6 +1,8 @@
 package com.pluralsight.ui;
 
 import com.pluralsight.drinks.MenuItem;
+import com.pluralsight.utillities.*;
+
 import java.util.*;
 
 public class MenuDisplay {
@@ -29,7 +31,7 @@ public class MenuDisplay {
     }
 
 
-    public static void showCategoryMenu(Scanner read, Map<Integer, MenuItem> menuMap) {
+    public static void showCategoryMenu(Scanner read, Map<Integer, MenuItem> menuMap) throws InterruptedException {
 
         // Category Menu
         System.out.println("\n--- Browse Categories ---");
@@ -47,6 +49,7 @@ public class MenuDisplay {
         } catch (NumberFormatException e) {
             System.out.println("Invalid entry.");
         }
+        Loading.kappaLoader();
 
         switch (choice) {
             case 1 -> showCoffee(menuMap);

@@ -3,6 +3,7 @@ package com.pluralsight.ui;
 import com.pluralsight.data.*;
 import com.pluralsight.orders.*;
 import com.pluralsight.drinks.*;
+import com.pluralsight.utillities.*;
 
 import java.util.*;
 import java.io.*;
@@ -17,7 +18,7 @@ public class OrderScreen {
     private static final String FOOD_CSV = "food.csv";
     private static final String ADDONS_CSV = "addons.csv";
 
-    public static void newOrder(Scanner read) throws IOException {
+    public static void newOrder(Scanner read) throws IOException, InterruptedException {
         // Menus and add=ons containers
         Map<Integer, MenuItem> menuMap = new TreeMap<>();
         List<AddOn> addOns = new ArrayList<>();
@@ -41,6 +42,7 @@ public class OrderScreen {
             System.out.println("Choose: ");
 
             int choice = getValidInt(read);
+            Loading.kappaLoader();
 
             switch (choice) {
                 case 1 -> displayFullMenu(menuMap);
