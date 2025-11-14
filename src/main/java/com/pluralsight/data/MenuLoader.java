@@ -9,6 +9,7 @@ public class MenuLoader {
     public static List<MenuItem> loadMenu(String fileName){
         List<MenuItem> items = new ArrayList<>();
 
+        // Reads Coffee, Tea, Signature Drinks, and Food file
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
             String header = reader.readLine(); // skips the first line
             String line;
@@ -25,6 +26,7 @@ public class MenuLoader {
                 String cat = category.toLowerCase();
                 MenuItem item;
 
+                // Reads code my category
                 if (cat.contains("brew") || cat.contains("milk") || cat.contains("chilled") || cat.contains("sweet")){
                     item = new Coffee(itemNumber, category, name, small, medium, large);
                 } else if (cat.contains("tea")) {

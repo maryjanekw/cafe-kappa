@@ -57,6 +57,7 @@ public class OrderItem {
         return (base + addons) * quantity;
     }
 
+    // Formats items for display
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();

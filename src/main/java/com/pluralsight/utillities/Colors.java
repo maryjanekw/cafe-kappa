@@ -1,7 +1,5 @@
 package com.pluralsight.utillities;
 
-import com.pluralsight.drinks.MenuItem;
-
 public class Colors {
 
     // colors

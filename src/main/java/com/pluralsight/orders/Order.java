@@ -65,7 +65,7 @@ public class Order {
         return lines.remove(line);
     }
 
-    // Total of order
+    // Order Calculations tools
     public double calculatedSubtotal(){
         return lines.stream()
                 .mapToDouble(OrderItem::getLineTotal)
@@ -120,5 +120,4 @@ public class Order {
     public void clear() {
         lines.clear();
     }
-
 }

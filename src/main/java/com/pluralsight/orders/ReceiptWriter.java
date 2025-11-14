@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ReceiptWriter {
 
+    // Date and Time of Order
     private static final DateTimeFormatter FIlE_TIMESTAMP = DateTimeFormatter.ofPattern("yyyyMMddd-HHmmss");
     private static final Path RECEIPTS_DIRECTORY = Paths.get("receipts");
 
@@ -55,6 +56,4 @@ public class ReceiptWriter {
             throw ex;
         }
     }
-
-
 }

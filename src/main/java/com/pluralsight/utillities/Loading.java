@@ -2,6 +2,7 @@ package com.pluralsight.utillities;
 
 public class Loading {
 
+    // Loading method
     public static void kappaLoader() throws InterruptedException {
         System.out.print(Colors.KAPPA_GOLD + "Loading\n" + Colors.RESET);
         System.out.print(Colors.KAPPA_GREEN + "(｡•ᴗ•｡) " + Colors.RESET);

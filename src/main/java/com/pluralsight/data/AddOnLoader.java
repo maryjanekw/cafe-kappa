@@ -9,6 +9,7 @@ public class AddOnLoader {
     public static List<AddOn> loadAddOn(String _fileName){
         List<AddOn> extras = new ArrayList<>();
 
+        // Reads Addon file
         try (BufferedReader reader = new BufferedReader(new FileReader(_fileName))){
             String header = reader.readLine(); // skips the first line
             String line;

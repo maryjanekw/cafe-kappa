@@ -3,7 +3,6 @@ package com.pluralsight.ui;
 import com.pluralsight.drinks.MenuItem;
 import com.pluralsight.utillities.*;
 
-import java.time.format.TextStyle;
 import java.util.*;
 
 public class MenuDisplay {
@@ -112,4 +111,3 @@ public class MenuDisplay {
         }
     }
 }
-

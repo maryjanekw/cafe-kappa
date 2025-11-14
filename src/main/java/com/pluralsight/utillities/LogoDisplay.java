@@ -2,6 +2,7 @@ package com.pluralsight.utillities;
 
 public class LogoDisplay {
 
+    // Shop Banner Display method
     public static void showBanner() {
         System.out.println(Colors.KAPPA_GREEN + """
              ____       __   __   _  __                       
@@ -13,6 +14,7 @@ public class LogoDisplay {
             """ + Colors.RESET);
     }
 
+    // Shop Mascot Display method
     public static void showMascot() {
         System.out.println(Colors.KAPPA_GREEN + """
                   (_)\s

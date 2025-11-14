@@ -35,7 +35,6 @@ public class MenuItem {
         return name;
     }
 
-
     public double getPrice(String size){
         return switch (size.toLowerCase()){
             case "small" -> smallPrice;

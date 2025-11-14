@@ -26,5 +26,4 @@ public abstract class Drink extends MenuItem{
         this.size = (size == null || size.isBlank()) ? "small" : size.toLowerCase();
     }
 
-
 }
