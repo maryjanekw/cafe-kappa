@@ -44,15 +44,18 @@ public class OrderScreen {
 
             switch (choice) {
                 case 1 -> displayFullMenu(menuMap);
-            //    case 2 ->
-                case 3 -> handleAddItem(read, menuMap, addOns, order);
+                case 2 -> MenuDisplay.showCategoryMenu(read, menuMap);
+                case 3 -> {
+                    System.out.println("\nStarting a new order...\n");
+                    handleAddItem(read, menuMap, addOns, order);
+                }
                 case 4 -> System.out.println("\nCurrent order:\n " + order.buildReceiptText());
                 case 5 -> checkout(read, order);
                 case 0 -> {
                     System.out.println("Order cancelled.");
                     ordering = false;
                 }
-                default -> System.out.println("Invalid choice.");
+                default -> System.out.println("Invalid choice. Try again");
             }
         }
     }
@@ -190,16 +193,6 @@ public class OrderScreen {
 
         // Print cart summary
         order.printSummary();
-
-//        // Gets calculations from Order class
-//        double subtotal = order.calculatedSubtotal();
-//        double tax = order.getTax();
-//        double total = subtotal + tax;
-//
-//        // Prints calculated totals
-//        System.out.printf("\nSubtotal: $%.2f%n", subtotal);
-//        System.out.printf("Tax: $%.2f%n", tax);
-//        System.out.printf("Total: $%.2f%n", total);
 
         // Confirms purchase
         System.out.println("\nWould you like to complete this order? (yes/no): ");

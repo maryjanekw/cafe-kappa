@@ -21,10 +21,7 @@ public class MainMenu {
             int choice = getValidInt(read);
 
             switch (choice) {
-                case 1 -> {
-                    System.out.println("\nStarting a new order...\n");
-                    OrderScreen.newOrder(read);
-                }
+                case 1 -> OrderScreen.newOrder(read);
                 case 0 -> {
                     running = false;
                     System.out.println("Goodbye!");

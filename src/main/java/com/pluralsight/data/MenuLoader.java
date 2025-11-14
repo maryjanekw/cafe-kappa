@@ -24,13 +24,7 @@ public class MenuLoader {
 
                 String cat = category.toLowerCase();
                 MenuItem item;
-//                switch (category.toLowerCase()){
-//                    case "coffee" -> item = new Coffee(itemNumber, category, name, small, medium, large);
-//                    case "tea" -> item = new Tea(itemNumber, category, name, small, medium, large);
-//                    case "signature drinks" -> item = new SignatureDrink(itemNumber, category, name, small, medium, large);
-//                    case "food" -> item = new Food(itemNumber, category, name, small); // small = price
-//                    default -> item = new MenuItem(itemNumber, category, name, small, medium, large);
-//                };
+
                 if (cat.contains("brew") || cat.contains("milk") || cat.contains("chilled") || cat.contains("sweet")){
                     item = new Coffee(itemNumber, category, name, small, medium, large);
                 } else if (cat.contains("tea")) {
