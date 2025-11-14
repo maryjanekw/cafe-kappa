@@ -1,5 +1,7 @@
 package com.pluralsight.ui;
 
+import com.pluralsight.utillities.*;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -9,9 +11,13 @@ public class MainMenu {
         Scanner read = new Scanner(System.in);
         boolean running = true;
 
+        LogoDisplay.showBanner();
+
+
         while (running) {
             // Main menu display1
 
+            LogoDisplay.showMascot();
             System.out.println("===== Welcome to Café Kappa =====");
             System.out.println("1) Start New Order");
             System.out.println("0) Exit");
@@ -25,6 +31,7 @@ public class MainMenu {
                 case 0 -> {
                     running = false;
                     System.out.println("Goodbye!");
+                    LogoDisplay.showMascot();
                 }
                 default -> System.out.println("Invalid choice. Try again.");
             }
@@ -45,4 +52,4 @@ public class MainMenu {
             }
         }
     }
-} 
+}
