@@ -14,13 +14,12 @@ public class LogoDisplay {
     }
 
     public static void showMascot() {
-        System.out.println("""
+        System.out.println(Colors.KAPPA_GREEN + """
                   (_)\s
                  /⌐v¬\\
                  (^°^)
                 ()≡ ()
                   └┴┘\s
-                """);
+                """ + Colors.RESET);
     }
-
 }

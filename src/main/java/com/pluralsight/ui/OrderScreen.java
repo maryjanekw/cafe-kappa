@@ -32,7 +32,7 @@ public class OrderScreen {
 
         while (ordering) {
             // Order Menu
-            System.out.println("\n====== Order Menu ======");
+            System.out.println(Colors.KAPPA_GREEN + "\n====== Order Menu ======" + Colors.RESET);
             System.out.println("1) Show full menu");
             System.out.println("2) Show menu by category");
             System.out.println("3) Add item");
@@ -81,8 +81,13 @@ public class OrderScreen {
     public static void displayFullMenu(Map<Integer, MenuItem> menuMap) {
         System.out.println("\n--- Café Kappa Full Menu ---");
         for (MenuItem m : menuMap.values()) {
+
+            // For name = color
+            String paddedName = String.format("%-25s", m.getName());
+            String coloredName = Colors.colorByCategory(paddedName, m.getCategory());
+
             System.out.printf("%-4s %-30s Small:$%-8.2f Medium:$%-8.2f Large:$%-8.2f%n",
-                    m.getItemNumber(), m.getName(),
+                    m.getItemNumber(), coloredName,
                     m.getPrice("small"), m.getPrice("medium"), m.getPrice("large"));
         }
     }

@@ -3,6 +3,7 @@ package com.pluralsight.ui;
 import com.pluralsight.drinks.MenuItem;
 import com.pluralsight.utillities.*;
 
+import java.time.format.TextStyle;
 import java.util.*;
 
 public class MenuDisplay {
@@ -34,7 +35,7 @@ public class MenuDisplay {
     public static void showCategoryMenu(Scanner read, Map<Integer, MenuItem> menuMap) throws InterruptedException {
 
         // Category Menu
-        System.out.println("\n--- Browse Categories ---");
+        System.out.println(Colors.KAPPA_GREEN + "\n--- Browse Categories ---" + Colors.RESET);
         System.out.println("1) Coffee");
         System.out.println("2) Tea");
         System.out.println("3) Signature Drinks");
@@ -91,10 +92,14 @@ public class MenuDisplay {
             if (matches(item.getCategory(), keywords)) {
                 found = true;
 
+                // For name = color
+                String paddedName = String.format("%-25s", item.getName());
+                String coloredName = Colors.colorByCategory(paddedName, item.getCategory());
+
                 System.out.printf(
                         "%d) %-25s  Small:$%.2f  Medium:$%.2f  Large:$%.2f%n",
                         item.getItemNumber(),
-                        item.getName(),
+                        coloredName,
                         item.getPrice("small"),
                         item.getPrice("medium"),
                         item.getPrice("large")
