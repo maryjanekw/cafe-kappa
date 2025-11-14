@@ -18,7 +18,7 @@ public class MainMenu {
             // Main menu display1
 
             LogoDisplay.showMascot();
-            System.out.println("===== Welcome to Café Kappa =====");
+            System.out.println(Colors.KAPPA_GREEN + "===== Welcome to Café Kappa =====" + Colors.RESET);
             System.out.println("1) Start New Order");
             System.out.println("0) Exit");
             System.out.print("Choose an option: ");
