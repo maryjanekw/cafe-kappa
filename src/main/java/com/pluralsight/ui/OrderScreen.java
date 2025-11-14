@@ -211,7 +211,7 @@ public class OrderScreen {
         }
 
         System.out.println(order.buildReceiptText());
-        System.out.println("Order complete!");
+        System.out.println("Order complete! Thank you for your Order!");
         order.clear();
 
 

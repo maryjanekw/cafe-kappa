@@ -15,7 +15,7 @@ public class MainMenu {
 
 
         while (running) {
-            // Main menu display1
+            // Main menu display
 
 //            LogoDisplay.showMascot();
             System.out.println(Colors.KAPPA_GREEN + "===== Welcome to Café Kappa =====" + Colors.RESET);

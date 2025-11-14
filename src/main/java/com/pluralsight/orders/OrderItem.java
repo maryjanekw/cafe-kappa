@@ -66,7 +66,7 @@ public class OrderItem {
             sb.append(System.lineSeparator()).append(" Add-ons: ");
             for (AddOn a : addOns) {
                 sb.append(a.getName());
-                if (!a.isFree()) sb.append(String.format(" ($%.2f)", a.getPrice()));
+                if (!a.isFree()) sb.append(String.format(" ($%.2f)", a.getPrice() * quantity));
                 sb.append(", \n");
             }
             sb.setLength(sb.length() - 2);
