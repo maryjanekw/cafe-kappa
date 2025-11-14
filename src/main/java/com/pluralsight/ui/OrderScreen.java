@@ -192,7 +192,7 @@ public class OrderScreen {
 
 
     // Checkout method
-    private static void checkout(Scanner read, Order order) throws IOException {
+    private static void checkout(Scanner read, Order order) throws IOException, InterruptedException {
         if (order == null || order.isEmpty()){
             System.out.println("Checkout is empty!");
             return;
@@ -204,6 +204,7 @@ public class OrderScreen {
         // Confirms purchase
         System.out.println("\nWould you like to complete this order? (yes/no): ");
         String confirm = read.nextLine().trim().toLowerCase();
+        Loading.kappaLoader();
         if (!confirm.equals("yes")){
             System.out.println("Canceling order... \nReturn to menu...");
             return;

@@ -82,7 +82,7 @@ public class MenuDisplay {
     private static void showCategory(String title, List<String> keywords,
                                      Map<Integer, MenuItem> menuMap) {
 
-        System.out.println("\n----- " + title + " -----");
+        System.out.println(Colors.KAPPA_GREEN + "\n----- " + title + " -----" + Colors.RESET);
 
         boolean found = false;
 
